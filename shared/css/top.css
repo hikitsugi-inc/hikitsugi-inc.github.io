@@ -1,0 +1,558 @@
+/* ---------------------------------------
+    top
+    background
+--------------------------------------- */
+body    {
+    position: relative;
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: #769EAC;
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    z-index: -2;
+    
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 220px;
+    height: 220px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 120px;
+    height: 120px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 160px;
+    height: 160px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 230px;
+    height: 230px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+
+
+@keyframes animate {
+    0%{
+        transform: translateY(-4000px) rotate(0deg);
+        opacity: 0.3;
+        border-radius: 3px;
+    }
+
+    100%{
+        transform: translateY(0) rotate(720deg);
+        opacity: 0.3;
+        border-radius: 6px;
+    }
+}
+
+/* ---------------------------------------
+    top
+--------------------------------------- */
+.mv {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 70px);
+    padding: 30px;
+}
+
+.mv .img {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    margin-left: auto;
+    width: 70%;
+}
+
+.mv .img img    {
+    width: 100%;
+}
+
+.mv .title  {
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
+}
+
+/* ---------------------------------------
+    common
+--------------------------------------- */
+article {
+    padding:360px 30px;
+}
+
+h2.heading  {
+    display: inline-block;
+    font-size: 10.0rem;
+    margin-bottom: 100px;
+    border-bottom: 2px solid #426167;
+    text-shadow: 8px 0px 17px #fff;
+}
+
+h2.heading span {
+    display: block;
+    font-size: 2.4rem;
+    font-weight: normal;
+    margin: 30px 0;
+}
+
+.top    {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 60px;
+    height: 60px;
+    border: 2px solid #426167;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #fff;
+}
+
+.top .center    {
+    position: relative;
+    width: 60px;
+    height: 60px;
+}
+
+.top a  {
+    display: block;
+    position: absolute;
+    top: 47%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-decoration: none;
+    color: #426167;
+    font-size: 2.0rem;
+}
+
+.animetion  {
+    opacity: 0;
+    transition: 2s;
+}
+
+.animetion.on  {
+    opacity: 1;
+}
+
+/* ---------------------------------------
+    about
+--------------------------------------- */
+article.about   {
+    position: relative;
+    text-align: right;
+    margin-top: 200px;
+    padding: 0 30px;
+    transition: .6s;
+}
+
+article.about h2.heading    {
+    margin-bottom: 120px;
+    padding-top: 400px;
+    padding-left: 50px;
+}
+
+article.about h3    {
+    font-size: 4.0rem;
+    margin-bottom: 60px;
+}
+
+article.about p {
+    font-size: 2.2rem;
+    line-height: 1.6;
+    text-align: left;
+    width: 60%;
+    margin-left: auto;
+}
+
+article.about img   {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 46%;
+    z-index: -1;
+}
+
+/* ---------------------------------------
+    service
+--------------------------------------- */
+article.service {
+    text-align: center;
+}
+
+article.service h2.heading    {
+    padding: 0 50px;
+}
+
+article.service .list   {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+
+article.service .list section   {
+    width: 24%;
+    text-align: center;
+}
+
+article.service .list section img   {
+    display: block;
+    width: 130px;
+    margin: 20px auto 40px;
+}
+
+article.service .list section h3   {
+    margin: 0 0 30px;
+    font-size: 2.8rem;
+    font-weight: bold;
+}
+
+article.service .list section p {
+    font-size: 2.2rem;
+    line-height: 1.5;
+}
+/* ---------------------------------------
+    tablet layout
+--------------------------------------- */
+@media screen and (max-width: 1080px) {
+    /* ---------------------------------------
+        background
+    --------------------------------------- */
+    .circles li:nth-child(1){
+        left: 25%;
+        width: 40px;
+        height: 40px;
+        animation-delay: 0s;
+    }
+    
+    .circles li:nth-child(2){
+        left: 10%;
+        width: 100px;
+        height: 100px;
+        animation-delay: 2s;
+        animation-duration: 12s;
+    }
+    
+    .circles li:nth-child(3){
+        left: 70%;
+        width: 80px;
+        height: 80px;
+        animation-delay: 4s;
+    }
+    
+    .circles li:nth-child(4){
+        left: 40%;
+        width: 70px;
+        height: 70px;
+        animation-delay: 0s;
+        animation-duration: 18s;
+    }
+    
+    .circles li:nth-child(5){
+        left: 65%;
+        width: 90px;
+        height: 90px;
+        animation-delay: 0s;
+    }
+    
+    .circles li:nth-child(6){
+        left: 75%;
+        width: 90px;
+        height: 90px;
+        animation-delay: 3s;
+    }
+    
+    .circles li:nth-child(7){
+        left: 35%;
+        width: 180px;
+        height: 180px;
+        animation-delay: 7s;
+    }
+    
+    .circles li:nth-child(8){
+        left: 50%;
+        width: 25px;
+        height: 25px;
+        animation-delay: 15s;
+        animation-duration: 45s;
+    }
+    
+    .circles li:nth-child(9){
+        left: 20%;
+        width: 130px;
+        height: 130px;
+        animation-delay: 2s;
+        animation-duration: 35s;
+    }
+    
+    .circles li:nth-child(10){
+        left: 85%;
+        width: 160px;
+        height: 160px;
+        animation-delay: 0s;
+        animation-duration: 11s;
+    }
+    /* ---------------------------------------
+        common
+    --------------------------------------- */
+    article {
+        padding: 220px 30px;
+    }
+
+    h2.heading  {
+        margin-bottom: 50px;
+    }
+    /* ---------------------------------------
+        mv
+    --------------------------------------- */
+    .mv {
+        height: 74vh;
+    }
+    .mv .img    {
+        width: 95%;
+        top: 120px;
+    }
+
+    /* ---------------------------------------
+        about
+    --------------------------------------- */
+    article.about   {
+        margin-top: 80px;
+    }
+
+    article.about img   {
+        width: 83%;
+    }
+
+    article.about h2.heading {
+        margin-top: 460px;
+        padding-top: 0;
+        margin-bottom: 50px;
+    }
+
+    article.about h3    {
+        margin-bottom: 30px;
+        font-size: 3.6rem;
+    }
+
+    article.about p {
+        width: 100%;
+        font-size: 1.8rem;
+    }
+
+}
+
+@media screen and (max-width: 770px) {
+    /* ---------------------------------------
+        common
+    --------------------------------------- */
+    article {
+        padding: 150px 30px;
+    }
+
+    h2.heading  {
+        font-size: 7.0rem;
+        margin-bottom: 0;
+    }
+    /* ---------------------------------------
+        mv
+    --------------------------------------- */
+    .mv .title  {
+        bottom: -20px;
+    }
+    /* ---------------------------------------
+        about
+    --------------------------------------- */
+    article.about h2.heading    {
+        margin-top: 360px;
+        padding-top: 0;
+    }
+    /* ---------------------------------------
+        service
+    --------------------------------------- */
+    article.service .list section {
+        width: 30%;
+        text-align: center;
+    }
+
+    article.service .list section img   {
+        width: 100px;
+    }
+
+    article.service .list section h3    {
+        font-size: 2.3rem;
+    }
+
+    article.service .list section p {
+        font-size: 1.8rem;
+    }
+}
+
+/* ---------------------------------------
+    sp layout
+--------------------------------------- */
+@media screen and (max-width: 640px) {
+    /* ---------------------------------------
+        common
+    --------------------------------------- */
+    h2.heading  {
+        font-size: 4.0rem;
+    }
+    /* ---------------------------------------
+        mv
+    --------------------------------------- */
+    .mv h2  {
+        font-size: 5.0rem;
+    }
+
+    .mv .img    {
+        width: 100%;
+        height: 100vh;
+        background-image: url(../img/top_img.svg);
+        background-repeat: no-repeat;
+        background-size: 152%;
+    }
+
+    .mv .img img    {
+       display: none; 
+    }
+
+    .mv .title  {
+        left: 15px;
+        bottom: 1px;
+    }
+
+    /* ---------------------------------------
+        common
+    --------------------------------------- */
+    article {
+        padding: 100px 16px;
+    }
+
+    h2.heading span {
+        font-size: 1.8rem;
+        margin: 15px 0 20px;
+    }
+
+    .top    {
+        right: 16px;
+        bottom: 16px;
+    }
+    /* ---------------------------------------
+        about
+    --------------------------------------- */
+    article.about   {
+        padding: 0 16px;
+    }
+
+    article.about img   {
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    article.about h2.heading    {
+        margin-top: 240px;
+        margin-bottom: 30px;
+    }
+
+    article.about h3    {
+        font-size: 2.6rem;
+        line-height: 1.4;
+    }
+    /* ---------------------------------------
+        service
+    --------------------------------------- */
+    article.service .list   {
+        flex-direction: column;
+    }
+
+    article.service .list section   {
+        width: 100%;
+    }
+
+    article.service .list section:nth-child(even)    {
+        margin: 50px 0;
+    }
+
+    article.service .list section h3    {
+        margin-bottom: 20px;
+    }
+}

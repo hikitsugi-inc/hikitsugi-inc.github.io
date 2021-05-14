@@ -1,0 +1,391 @@
+/* ---------------------------------------
+    common
+--------------------------------------- */
+.clear  {
+    clear: both;
+}
+
+.wrap   {
+    max-width: 1100px;
+    margin: 100px auto 110px;
+}
+
+.wrap_full  {
+    margin: 100px auto 110px;
+}
+
+.sp {
+   display: none; 
+}
+
+.tab    {
+    display: none;
+}
+
+@media screen and (max-width: 1100px) {
+    .wrap   {
+        width: 100%;
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .pc {
+        display: none;
+    }
+
+    .tab    {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .wrap   {
+        width: 100%;
+        padding: 0 16px;
+    }
+
+    .sp {
+        display: block;
+    }
+}
+/* ---------------------------------------
+    font
+--------------------------------------- */
+html    {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size:62.5%;
+    color: #426167;
+}
+
+h2  {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 12.6rem;
+    color: #426167;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+p,
+li,
+dt,
+dd   {
+    font-size: 1.6rem;
+}
+
+@media screen and (max-width: 770px) {
+    h2  {
+        font-size: 9.6rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    h2  {
+        font-size: 6.0rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    p{
+        font-size: 1.6rem;
+        line-height: 1.5;
+    }
+}
+
+
+/* ---------------------------------------
+    header
+--------------------------------------- */
+header  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    padding: 0 30px;
+    background-color: #fff;
+    z-index: 90;
+    transition: .3s;
+}
+
+header h1  {
+    float: left;
+}
+
+header h1 img   {
+    width: 200px;
+    padding-top: 20px;
+}
+
+header .drawer  {
+    float: right;
+}
+
+header nav ul   {
+    display: flex;
+    flex-direction: row;
+}
+
+header nav ul li a {
+    display: block;
+    margin: 20px 10px;
+    padding: 13px 30px;
+    color: #707070;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition-duration:1s;
+}
+
+header nav ul li:last-child a   {
+    margin-right: 0;
+    color: #fff;
+    background-color: #426167;
+}
+
+header nav ul li a:hover    {
+    border-bottom: 1px solid #426167;
+}
+
+.drawer_hidden {
+    display: none;
+}
+
+@media screen and (max-width: 770px) {
+    header nav ul li a {
+        padding: 16px 17px;
+    }
+}
+  
+@media screen and (max-width: 640px) {
+    /* ハンバーガーアイコンの設置スペース */
+    .drawer_open {
+        display: flex;
+        height: 60px;
+        width: 60px;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        z-index: 100;/* 重なり順を一番上に */
+        cursor: pointer;
+    }
+    
+    /* ハンバーガーメニューのアイコン */
+    .drawer_open span,
+    .drawer_open span:before,
+    .drawer_open span:after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 25px;
+        border-radius: 3px;
+        background: #333;
+        transition: 0.5s;
+        position: absolute;
+    }
+    
+    /* 三本線のうち一番上の棒の位置調整 */
+    .drawer_open span:before {
+        bottom: 8px;
+    }
+    
+    /* 三本線のうち一番下の棒の位置調整 */
+    .drawer_open span:after {
+        top: 8px;
+    }
+    
+    /* アイコンがクリックされたら真ん中の線を透明にする */
+    #drawer_check:checked ~ .drawer_open span {
+        background: rgba(255, 255, 255, 0);
+    }
+    
+    /* アイコンがクリックされたらアイコンが×印になように上下の線を回転 */
+    #drawer_check:checked ~ .drawer_open span::before {
+        bottom: 0;
+        transform: rotate(45deg);
+    }
+    
+    #drawer_check:checked ~ .drawer_open span::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+        
+    /* メニューのデザイン*/
+    .drawer_content {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 69px;
+        left: 100%;/* メニューを画面の外に飛ばす */
+        z-index: 99;
+        background: #fff;
+        transition: .5s;
+    }
+    
+    /* アイコンがクリックされたらメニューを表示 */
+    #drawer_check:checked ~ .drawer_content {
+        left: 0;/* メニューを画面に入れる */
+    }
+
+    header {
+        padding: 0 0 0 16px;
+    }
+
+    header nav ul   {
+        flex-direction: column;
+    }
+
+    header nav ul li a  {
+        text-align: center;
+    } 
+
+    header nav ul li:last-child a   {
+        color: #707070;
+        background-color: #fff;
+    }
+}
+
+/* ---------------------------------------
+    footer
+--------------------------------------- */
+footer  {
+    color: #fff;
+    background-color: #30494D;
+    text-align: center;
+    padding: 30px 0 10px;
+}
+
+footer a  {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer ul   {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    list-style: none;
+    padding: 20px 0;
+}
+
+footer ul li    {
+    width: 170px;
+}
+
+footer p    {
+    margin: 20px 0 6px;
+}
+
+/* ---------------------------------------
+    sp layout
+--------------------------------------- */
+@media screen and (max-width: 770px) {
+    /* ---------------------------------------
+        footer
+    --------------------------------------- */
+    footer ul li    {
+        width: auto;
+        padding: 0 30px;
+    }
+}
+
+/* ---------------------------------------
+    contact
+--------------------------------------- */
+article.contact {
+    text-align: center;
+    background-color: #426167;
+    color: #fff;
+    margin: 0;
+    padding: 60px 0 100px;
+}
+
+article.contact a   {
+    display: block;
+    text-decoration: none;
+}
+
+article.contact h2.heading  {
+    border-bottom: none;
+    margin-bottom: 30px;
+    color: #fff;
+    text-shadow:1px 0 0 transparent,0 1px 0 transparent,-1px 0 0 transparent,0 -1px 0 transparent;
+    transition: .6s;
+}
+
+article.contact a:hover h2.heading  {
+    color: #426167;
+    text-shadow:1px 0 0 #fff,0 1px 0 #fff,-1px 0 0 #fff,0 -1px 0 #fff;
+}
+
+article.contact p   {
+    font-size: 2.2rem;
+    color: #fff;
+}
+
+article.contact .scroll {
+    display: inline-block;
+    padding-top: 90px;
+    position: relative;
+    width: 100%;
+}
+
+article.contact .scroll::before {
+    animation: scroll 2.0s infinite;
+    border: solid #fff;
+    border-width: 0 0 2px 2px;
+    content: "";
+    display: inline-block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    transform: rotate(-45deg);
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes scroll {
+    0% {
+      transform: rotate(-45deg) translate(0, 0);
+    }
+    80% {
+      transform: rotate(-45deg) translate(-30px, 30px);
+    }
+    0%, 80%, 100% {
+      opacity: 0;
+    }
+    40% {
+      opacity: 1;
+    }
+}
+
+/* ---------------------------------------
+    tablet layout
+--------------------------------------- */
+@media screen and (max-width: 770px) {
+    /* ---------------------------------------
+        contact
+    --------------------------------------- */
+    article.contact {
+        padding: 10px 0 70px;
+    }
+}
+
+/* ---------------------------------------
+    sp layout
+--------------------------------------- */
+@media screen and (max-width: 640px) {
+    /* ---------------------------------------
+        contact
+    --------------------------------------- */
+    article.contact p {
+        font-size: 1.8rem;
+    }
+}
