@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            // 2. This code loads the IFrame Player API code asynchronously.
+            var tag = document.createElement('script');
+
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+            // 3. This function creates an <iframe> (and YouTube player)
+            //    after the API code downloads.
+            var player;
+            window.onYouTubeIframeAPIReady = function () {
+                player = new YT.Player('player', {
+                    // height: '360',
+                    // width: '640',
+                    videoId: '_Dd3oj6NKxQ',
+                    events: {
+                        'onReady': onPlayerReady,
+                        'onStateChange': onPlayerStateChange
+                    },
+                    playerVars: {
+                        'autoplay': 1,
+                        'mute': 1
+                    }
+                });
+            }
+
+            // 4. The API will call this function when the video player is ready.
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+            // 5. The API calls this function when the player's state changes.
+            //    The function indicates that when playing a video (state=1),
+            //    the player should play for six seconds and then stop.
+            var done = false;
+            function onPlayerStateChange(event) {
+                console.log(event);
+                // if (event.data == YT.PlayerState.PLAYING && player.isMuted()) {
+                //     setTimeout(() => player.unMute(), 1500);
+                // }
+                // if (event.data == YT.PlayerState.PLAYING && !done) {
+                // setTimeout(stopVideo, 6000);
+                // done = true;
+                // }
+            }
+            function stopVideo() {
+                player.stopVideo();
+            }
+
+            $("[data-text]").each(function(index, elem) {
+                const dtext = $(elem).attr("data-text");
+                const paramElement = $($(elem).closest("td")).prev().children("input[type=Text]");
+                $(paramElement).on("change", function(){
+                    const newValue = $(this).val();
+                    player.setOption(dtext, newValue);
+                });
+            })
+        });
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="h-screen">
+        <div class="h-2/4">
+            <div id="player" class="p-5 w-full h-full"></div>
+        </div>
+        <div class="h-2/4 overflow-y-auto p-5">
+            <table class="table-auto">
+                <thead>
+                    <tr class="align-top">
+                        <th colspan="3">パラメータ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="autoplay" data-text="autoplay"><code class="notranslate"
+                                    itemprop="property">autoplay</code></h3>
+                        </td>
+                        <td>プレーヤーを読み込んだときに最初の動画を自動再生するかどうかを指定します。サポートされる値は <code class="notranslate">0</code> または <code
+                                class="notranslate">1</code> です。デフォルト値は <code class="notranslate">0</code> です。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="cc_lang_pref" data-text="cc_lang_pref"><code class="notranslate"
+                                    itemprop="property">cc_<wbr>lang_<wbr>pref</code></h3>
+                        </td>
+                        <td>プレーヤーに表示する字幕のデフォルトの言語を指定します。パラメータの値は、<a
+                                href="http://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">ISO 639-1
+                                2 文字言語コード</a>に設定します。<br><br>このパラメータを使用したうえで <code
+                                class="notranslate"><a href="#cc_load_policy">cc_<wbr>load_<wbr>policy</a></code> パラメータを
+                            <code class="notranslate">1</code> に設定した場合、プレーヤーが読み込まれたときに指定した言語の字幕が表示されます。<code
+                                class="notranslate"><a href="#cc_load_policy">cc_<wbr>load_<wbr>policy</a></code>
+                            パラメータを設定していない場合、字幕がデフォルトで表示されなくなります。ただし、ユーザーが字幕を表示する設定にした場合はその指定した言語で表示されます。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="cc_load_policy" data-text="cc_load_policy"><code class="notranslate"
+                                    itemprop="property">cc_<wbr>load_<wbr>policy</code></h3>
+                        </td>
+                        <td>このパラメータの値を <code class="notranslate">1</code>
+                            に設定すると、ユーザーが字幕をオフにしていても、字幕がデフォルトで表示されます。デフォルトの動作はユーザー設定に基づきます。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="color" data-text="color"><code class="notranslate" itemprop="property">color</code>
+                            </h3>
+                        </td>
+                        <td>プレーヤーの動画進行状況バーで使用される色を指定します。これは、動画の視聴した部分を示す色として使用されます。有効なパラメータ値は <code
+                                class="notranslate">red</code> と <code class="notranslate">white</code>
+                            です。デフォルトでは、動画進行状況バーで赤が使用されます。color オプションの詳細については <a
+                                href="http://youtube-eng.blogspot.com/2011/08/coming-soon-dark-player-for-embeds_5.html">YouTube
+                                API ブログ</a>をご覧ください。<br><br><strong>注:</strong> <code class="notranslate">color</code>
+                            パラメータを <code class="notranslate">white</code> に設定すると、<code
+                                class="notranslate"><a href="#modestbranding">modestbranding</a></code> オプションが無効になります。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="controls" data-text="controls"><code class="notranslate"
+                                    itemprop="property">controls</code></h3>
+                        </td>
+                        <td>動画プレーヤーのコントロールを表示するかどうかを指定します。<p></p>
+                            <ul>
+                                <li><code class="notranslate">controls=0</code> – プレーヤー コントロールを表示しません。</li>
+                                <li><code class="notranslate">controls=1</code>（デフォルト）– プレーヤー コントロールを表示します。</li>
+                            </ul>
+                            <p></p>
+
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="disablekb" data-text="disablekb"><code class="notranslate"
+                                    itemprop="property">disablekb</code></h3>
+                        </td>
+                        <td>このパラメータの値を <code class="notranslate">1</code> に設定すると、プレーヤーはキーボード操作に応答しなくなります。デフォルト値は <code
+                                class="notranslate">0</code>（キーボード操作が有効）です。現在サポートされているキーボード操作は、次のとおりです。<p></p>
+                            <ul>
+                                <li>スペースキーまたは K キー: 再生 / 一時停止</li>
+                                <li>左矢印キー: 現在の動画を 5 秒戻す</li>
+                                <li>右矢印キー: 現在の動画を 5 秒進める</li>
+                                <li>上矢印キー: 音量を上げる</li>
+                                <li>下矢印キー: 音量を下げる</li>
+                                <li>F キー: 全画面モードを切り替える</li>
+                                <li>J キー: 現在の動画を 10 秒戻す</li>
+                                <li>L キー: 現在の動画を 10 秒進める</li>
+                                <li>M キー: ミュート / ミュート解除を切り替える</li>
+                                <li>0～9 キー: 指定した位置に移動する。<code>0</code> は動画の先頭へ、<code>1</code> は全体の 10%
+                                    の位置へ、<code>2</code> は全体の 20% の位置へ移動します。</li>
+                            </ul>
+                            <p></p>
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="enablejsapi" data-text="enablejsapi"><code class="notranslate"
+                                    itemprop="property">enablejsapi</code></h3>
+                        </td>
+                        <td>このパラメータの値を <code class="notranslate">1</code> に設定すると、<a
+                                href="https://developers.google.com/youtube/iframe_api_reference?hl=ja">IFrame</a> または
+                            <a href="https://developers.google.com/youtube/js_api_reference?hl=ja">JavaScript</a> Player
+                            API を呼び出してプレーヤーを制御できます。デフォルト値は <code class="notranslate">0</code>（これらの API
+                            を使用してプレーヤーを制御できない）です。<br><br>IFrame API とその使用方法について詳しくは、<a
+                                href="https://developers.google.com/youtube/iframe_api_reference?hl=ja">IFrame API
+                                のドキュメント</a>をご覧ください（JavaScript Player API のサポートは終了しています）。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="end" data-text="end"><code class="notranslate" itemprop="property">end</code></h3>
+                        </td>
+                        <td>動画を特定の位置で停止させる場合に、再生を開始してからの時間（秒数）でその位置を指定します。パラメータ値は正の整数です。<br><br>時間は動画の先頭から測定されます。<code
+                                class="notranslate">start</code> プレーヤー パラメータや <code
+                                class="notranslate">startSeconds</code> パラメータの値からではありません。これらは、動画の読み込みまたはキューイングを行うために
+                            YouTube Player API 関数で使用されるパラメータです。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="fs" data-text="fs"><code class="notranslate" itemprop="property">fs</code></h3>
+                        </td>
+                        <td>このパラメータを <code class="notranslate">0</code> に設定すると、全画面表示ボタンはプレーヤーに表示されなくなります。デフォルト値は <code
+                                class="notranslate">1</code> であり、全画面表示ボタンが表示されます。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="hl" data-text="hl"><code class="notranslate" itemprop="property">hl</code></h3>
+                        </td>
+                        <td>プレーヤーのインターフェースの言語を設定します。パラメータの値は、<a
+                                href="http://www.loc.gov/standards/iso639-2/php/code_list.php">ISO 639-1 規格の 2
+                                文字言語コード</a>または完全指定のロケールです。たとえば、<code>fr</code> や <code>fr-ca</code> は有効な値です。IETF
+                            言語タグ（BCP
+                            47）などの他の言語入力コードも正しく処理されます。<br><br>インターフェースの言語はプレーヤーのツールチップで使用され、デフォルトの字幕トラックにも影響します。なお、ユーザー個別の言語設定と利用可能な字幕トラックに基づいて、YouTube
+                            が特定のユーザーに対し異なる字幕トラックを選択することもあります。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="iv_load_policy" data-text="iv_load_policy"><code class="notranslate"
+                                    itemprop="property">iv_<wbr>load_<wbr>policy</code></h3>
+                        </td>
+                        <td>このパラメータの値を <code class="notranslate">1</code> に設定すると、動画アノテーションがデフォルトで表示されます。<code
+                                class="notranslate">3</code> に設定すると、動画アノテーションはデフォルトで表示されなくなります。デフォルト値は <code
+                                class="notranslate">1</code> です。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="list" data-text="list"><code class="notranslate" itemprop="property">list</code>
+                            </h3>
+                        </td>
+                        <td><code class="notranslate">list</code> パラメータは、プレーヤーに読み込むコンテンツを識別するときに、<code
+                                class="notranslate"><a href="#listType">listType</a></code> パラメータと組み合わせて使用します。
+                            <p></p>
+                            <ul>
+                                <li><code class="notranslate"><a href="#listType">listType</a></code> パラメータの値が <code
+                                        class="notranslate">search</code> の場合は、<code class="notranslate">list</code>
+                                    パラメータの値に検索クエリを指定します。</li>
+                                <li><code class="notranslate"><a href="#listType">listType</a></code> パラメータの値が <code
+                                        class="notranslate">user_uploads</code> の場合、<code
+                                        class="notranslate">list</code> パラメータの値には、読み込まれるアップロード動画の所有者の YouTube
+                                    チャンネルを指定します。</li>
+                                <li><code class="notranslate"><a href="#listType">listType</a></code> パラメータの値が <code
+                                        class="notranslate">playlist</code> の場合は、<code class="notranslate">list</code>
+                                    パラメータの値に YouTube 再生リスト ID を指定します。パラメータ値に含める再生リスト ID には、下の例に示すように、<code
+                                        class="notranslate">PL</code> という文字を先頭に付ける必要があります。<br>
+                                    <devsite-code no-copy="" data-copy-event-label="">
+                                        <div class="devsite-code-buttons-container" role="group" aria-label="操作ボタン">
+                                            <button type="button"
+                                                class="gc-analytics-event material-icons devsite-icon-code-dark devsite-toggle-dark"
+                                                data-category="Site-Wide Custom Events" data-label="Dark Code Toggle"
+                                                track-type="exampleCode" track-name="darkCodeToggle"
+                                                aria-label="コードをダークモードで表示" data-title="コードをダークモードで表示"></button><button
+                                                type="button"
+                                                class="gc-analytics-event material-icons devsite-icon-code-light devsite-toggle-light"
+                                                data-category="Site-Wide Custom Events" data-label="Light Code Toggle"
+                                                track-type="exampleCode" track-name="lightCodeToggle"
+                                                aria-label="コードをライトモードで表示" data-title="コードをライトモードで表示"></button></div>
+                                        <pre class="notranslate" is-upgraded="">
+              https://www.youtube.com/embed?<br>&nbsp;&nbsp;&nbsp;&nbsp;listType=playlist<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;list=PLC77007E23FF423C6</pre>
+                                    </devsite-code>
+                                </li>
+                            </ul>
+                            <strong>注:</strong> <code class="notranslate">list</code> パラメータと <code
+                                class="notranslate">listType</code> パラメータに値を指定する場合は、IFrame 埋め込み URL に動画 ID
+                            を指定する必要がありません。<br><br>
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="listtype" data-text="listType"><code class="notranslate"
+                                    itemprop="property">listType</code></h3>
+                        </td>
+                        <td><code class="notranslate">listType</code> パラメータは、プレーヤーに読み込むコンテンツを識別するときに、<code
+                                class="notranslate"><a href="#list">list</a></code> パラメータと組み合わせて使用します。有効なパラメータ値は、<code
+                                class="notranslate">playlist</code>、<code class="notranslate">search</code> および <code
+                                class="notranslate">user_<wbr>uploads</code> です。<br><br><code
+                                class="notranslate"><a href="#list">list</a></code> パラメータと <code
+                                class="notranslate">listType</code> パラメータに値を指定する場合は、IFrame 埋め込み URL に動画 ID
+                            を指定する必要がありません。</td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="loop" data-text="loop"><code class="notranslate" itemprop="property">loop</code>
+                            </h3>
+                        </td>
+                        <td>単一動画プレーヤーの場合に <code class="notranslate">1</code> を設定すると、最初の動画が繰り返し再生されます。再生リスト プレーヤーまたはカスタム
+                            プレーヤーの場合、再生リスト全体を再生した後、最初の動画からもう一度再生が始まります。<br><br>サポートされている値は <code
+                                class="notranslate">0</code> と <code class="notranslate">1</code> で、デフォルト値は <code
+                                class="notranslate">0</code> です。<br><br><strong>注:</strong> このパラメータは AS3 プレーヤーと埋め込み
+                            IFrame でのみサポートされており、AS3 または HTML5 プレーヤーのいずれかが読み込まれます。<code class="notranslate">loop</code>
+                            パラメータは、現時点では <code class="notranslate"><a href="#playlist">playlist</a></code> pパラメータと組み合わせて
+                            AS3 プレーヤーで使用した場合のみ動作します。単一の動画をループさせる場合は、<code class="notranslate">loop</code> パラメータの値を <code
+                                class="notranslate">1</code> に設定し、すでに Player API URL に指定してある動画 ID と同じ値を <code
+                                class="notranslate"><a href="#playlist">playlist</a></code> パラメータの値に設定します。<br>
+                            <devsite-code no-copy="" data-copy-event-label="">
+                                <div class="devsite-code-buttons-container" role="group" aria-label="操作ボタン"><button
+                                        type="button"
+                                        class="gc-analytics-event material-icons devsite-icon-code-dark devsite-toggle-dark"
+                                        data-category="Site-Wide Custom Events" data-label="Dark Code Toggle"
+                                        track-type="exampleCode" track-name="darkCodeToggle" aria-label="コードをダークモードで表示"
+                                        data-title="コードをダークモードで表示"></button><button type="button"
+                                        class="gc-analytics-event material-icons devsite-icon-code-light devsite-toggle-light"
+                                        data-category="Site-Wide Custom Events" data-label="Light Code Toggle"
+                                        track-type="exampleCode" track-name="lightCodeToggle" aria-label="コードをライトモードで表示"
+                                        data-title="コードをライトモードで表示"></button></div>
+                                <pre class="notranslate" is-upgraded="">
+              https://www.youtube.com/v/<strong>VIDEO_ID</strong>?<br>&nbsp;&nbsp;&nbsp;&nbsp;version=3<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;loop=1<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;playlist=<strong>VIDEO_ID</strong></pre>
+                            </devsite-code>
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="modestbranding" data-text="modestbranding"><code class="notranslate"
+                                    itemprop="property">modestbranding</code></h3>
+                        </td>
+                        <td>このパラメータを使用すると、YouTube プレーヤーに YouTube ロゴが表示されないようにすることができます。パラメータの値を <code
+                                class="notranslate">1</code> に設定すると、YouTube ロゴがコントロール
+                            バーに表示されなくなります。ただし、動画を一時停止したときにユーザーがプレーヤーにカーソルを合わせると、動画の右上に引き続き小さい <code
+                                class="notranslate">YouTube</code> テキストラベルが表示されます。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="origin" data-text="origin"><code class="notranslate"
+                                    itemprop="property">origin</code></h3>
+                        </td>
+                        <td>このパラメータは IFrame API のセキュリティを強化します。埋め込み IFrame でのみ使用できます。IFrame API を使用している場合、つまり <code
+                                class="notranslate"><a href="#enablejsapi">enablejsapi</a></code> パラメータの値を <code
+                                class="notranslate">1</code> に設定している場合は、常に自分のドメインを <code
+                                class="notranslate">origin</code> パラメータ値として指定する必要があります。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="playlist" data-text="playlist"><code class="notranslate"
+                                    itemprop="property">playlist</code></h3>
+                        </td>
+                        <td>このパラメータには、再生する動画 ID をカンマ区切りのリスト形式で指定します。値を指定すると、URL パスの <code
+                                class="notranslate">VIDEO_<wbr>ID</code> に指定した動画が最初に再生され、<code
+                                class="notranslate">playlist</code> パラメータに指定した動画はその後に再生されます。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="playsinline" data-text="playsinline"><code class="notranslate"
+                                    itemprop="property">playsinline</code></h3>
+                        </td>
+                        <td>このパラメータは iOS 上の HTML5 プレーヤーで動画をインラインまたは全画面表示のどちらで再生するかを制御します。有効な値は次のとおりです。<p></p>
+                            <ul>
+                                <li><code class="notranslate">0</code>:
+                                    この値を指定すると全画面表示で再生されます。現時点ではこれがデフォルト値ですが、デフォルトは変更される場合があります。</li>
+                                <li><code class="notranslate">1</code>:
+                                    この値を指定すると、<code>UIWebViews</code>（<code>allowsInlineMediaPlayback</code> プロパティを
+                                    <code>TRUE</code> に設定して作成したもの）がインライン再生されます。</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="rel" data-text="rel"><code class="notranslate" itemprop="property">rel</code></h3>
+                        </td>
+                        <td>
+                            <span><b>注:</b> このパラメータは 2018 年 9 月 25 日以降に<a
+                                    href="#release_notes_08_23_2018">変更されます</a>。</span><br><br>変更前は、最初の動画の再生が終了したときに、プレーヤーに関連動画を表示するかどうかを指定します。
+                            <ul>
+                                <li>パラメータの値がデフォルト値の <code class="notranslate">1</code> に設定されている場合、関連動画が表示されます。</li>
+                                <li>パラメータの値が <code class="notranslate">0</code> に設定されている場合、関連動画は表示されません。</li>
+                            </ul>変更後は、関連動画を無効にできなくなります。代わりに、<code>rel</code> パラメータを <code class="notranslate">0</code>
+                            に設定すると、再生した動画と同じチャンネルから関連動画が選択されます。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="showinfo" data-text="showinfo"><code class="notranslate"
+                                    itemprop="property">showinfo</code></h3>
+                        </td>
+                        <td>
+                            <span style="color: red"><b>注:</b> このパラメータは<a
+                                    href="#release_notes_08_23_2018">サポートを終了しており</a>、2018 年 9 月 25
+                                日以降はご利用いただけません。</span><br><br>サポートされている値は <code class="notranslate">0</code> と <code
+                                class="notranslate">1</code> です。<br><br>このパラメータの値を <code class="notranslate">0</code>
+                            に設定すると、動画の再生が始まる前に動画のタイトルやアップロードしたユーザーなどの情報は表示されません。<br><br>プレーヤーに再生リストを読み込む場合に、このパラメータの値を明示的に
+                            <code class="notranslate">1</code> に設定すると、再生リストに含まれる動画のサムネイル画像も読み込み時に表示されます。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="start" data-text="start"><code class="notranslate" itemprop="property">start</code>
+                            </h3>
+                        </td>
+                        <td>このパラメータを指定すると、動画の先頭から指定された秒数分進めた位置から動画の再生が開始されます。パラメータ値は正の整数です。<code
+                                class="notranslate"><a href="https://developers.google.com/youtube/js_api_reference?hl=ja#seekTo">seekTo</a></code>
+                            関数と同様に、プレーヤーは指定された時間に最も近いキーフレームを探します。そのため、リクエストされた時間の直前から再生が開始される場合もありますが、ずれは通常、最大で 2 秒程度です。
+                        </td>
+                    </tr>
+                    <tr class="align-top"><td><input type="text" class="px-3 py-px border rounded w-20" /></td>
+                        <td>
+                            <h3 id="widget_referrer" data-text="widget_referrer"><code class="notranslate"
+                                    itemprop="property">widget_<wbr>referrer</code></h3>
+                        </td>
+                        <td>プレーヤーが埋め込まれている URL を識別します。この値は、YouTube
+                            プレーヤーがウィジェットに埋め込まれ、このウィジェットがウェブページやアプリケーションに埋め込まれた場合に、YouTube
+                            アナリティクスのレポートで使用されます。このシナリオでは、<code><a href="#origin">origin</a></code> パラメータはウィジェット
+                            プロバイダのドメインを識別しますが、YouTube アナリティクスが実際のトラフィック ソースとしてウィジェット プロバイダを識別することはありません。代わりに、YouTube
+                            アナリティクスは <code>widget_<wbr>referrer</code> パラメータ値を使用して、トラフィック ソースに関連するドメインを識別します。
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
