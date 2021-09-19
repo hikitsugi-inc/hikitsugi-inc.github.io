@@ -13,7 +13,6 @@ main {
 article.wrap {
     padding: 0;
     text-align: center;
-    max-width: 860px;
 }
 
 article h2 {
@@ -32,48 +31,15 @@ article h2 span {
     margin: 20px 0;
 }
 
-article ul  {
-    list-style: none;
-}
-
-article ul li   {
-    position: relative;
-    font-size: 1.8rem;
+article section {
     text-align: left;
-    margin-bottom: 25px;
-    border-bottom: 1px solid #b2c5c9;
-}
-
-article ul li span,
-article ul li p {
-    font-size: 1.6rem;
     line-height: 1.6;
+    margin-bottom: 16px;
 }
 
-article ul li span  {
-    padding-left: 10px;
-    padding-bottom: 30px;
-    display: inline-block;
-    width: 180px;
-    vertical-align: top;
+ol {
+    margin-left: 30px;
 }
-
-article ul li span::after   {
-    content: "";
-    width: 180px;
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    border-bottom: 1px solid #426167;
-}
-
-article ul li p {
-    display: inline-block;
-    padding-left: 10px;
-    padding-bottom: 20px;
-    width: calc(100% - 190px);
-}
-
 /* ---------------------------------------
     sp layout
 --------------------------------------- */
@@ -96,17 +62,7 @@ article ul li p {
         margin: 16px 0;
     }
 
-    article ul li span  {
-        display: block;
-        padding-bottom: 10px;
-        font-weight: bold;
-    }
-
-    article ul li span::after   {
-        width: 120px;
-    }
-
-    article ul li p {
-        width: 100%;
+    ol {
+        margin-left: 20px;
     }
 }

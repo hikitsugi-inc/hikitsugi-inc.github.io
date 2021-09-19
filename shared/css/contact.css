@@ -1,0 +1,223 @@
+body {
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    margin-top: 70px;
+    padding: 0 50px;
+}
+
+article.wrap {
+    padding: 0;
+    text-align: center;
+    max-width: 860px;
+}
+
+article h2 {
+    font-size: 6.0rem;
+    margin-bottom: 100px;
+    padding: 0 30px;
+    display: inline-block;
+    text-align: center;
+    border-bottom: 2px solid #426167;
+}
+
+article h2 span {
+    display: block;
+    font-size: 2.0rem;
+    font-weight: normal;
+    margin: 20px 0;
+}
+
+form    {
+    text-align: left;
+}
+
+form div.clear  {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+form label  {
+    font-size: 1.6rem;
+    display: block;
+    text-align: left;
+}
+
+form label.title    {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 180px;
+    vertical-align: top;
+}
+
+form label.title span   {
+    background-color: #ca4646;
+    color: #fff;
+    display: inline-block;
+    margin-left: 10px;
+    padding: 2px 8px;
+    font-size: 1.3rem;
+    border-radius: 2px;
+}
+
+form label.error    {
+    margin-left: 180px;
+    margin-top: 10px;
+    color: #ca4646;
+}
+
+form div.answer,
+form label.confirm {
+    display: inline-block;
+    width: calc(100% - 190px);
+}
+
+form label.confirm {
+    position: absolute;
+    top: 0;
+    left: 190px;
+}
+
+form div.answer .flex   {
+    display: flex;
+    justify-content: space-between;
+}
+
+form div.answer .flex input {
+    width: 48%;
+}
+
+form input  {
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+}
+
+form textarea   {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+}
+
+label#contact_agreement1    {
+    text-align: center;
+}
+
+.agreement_area {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input#agreement {
+    width: 18px;
+}
+
+label#contact_agreement2 {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+
+.btn_area {
+    text-align: center;
+}
+
+input.btn,
+button.btn {
+    width: 200px;
+    height: 50px;
+    display: block;
+    margin: 40px auto 0;
+    border: none;
+    color: #fff;
+    background-color: #426167;
+    font-size: 1.6rem;
+}
+
+button.btn a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+
+input.btn:disabled  {
+    background-color: #ddd;
+}
+
+input#backBtn,
+input#submitBtn {
+    display: inline-block;
+}
+
+input#backBtn   {
+    margin-right: 10px;
+    background-color: #707070;
+}
+
+input#submitBtn {
+    margin-left: 10px;
+}
+
+div#success {
+    font-size: 1.6rem;
+}
+
+
+
+/* ---------------------------------------
+    sp layout
+--------------------------------------- */
+@media screen and (max-width: 640px) {
+    article.wrap    {
+        width: 100%;
+        margin-top: 60px;
+    }
+    main    {
+        padding: 0 16px;
+    }
+
+    article h2  {
+        font-size: 4.0rem;
+        margin-bottom: 50px;
+    }   
+
+    article h2 span {
+        font-size: 1.8rem;
+        margin: 16px 0;
+    }
+
+    form label.title    {
+        display: block;
+    }
+
+    form div.answer,
+    form label.confirm {
+        width: 100%;
+    }
+
+    form label.confirm  {
+        position: static;
+    }
+
+    label#contact_agreement1 {
+        line-height: 1.6;
+    }
+
+    input.btn,
+    button.btn   {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    input#backBtn   {
+        margin-right: 0;
+    }
+    
+    input#submitBtn {
+        margin-left: 0;
+    }
+}

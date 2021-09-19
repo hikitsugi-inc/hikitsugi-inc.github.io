@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="SHORTCUT ICON" href="">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../shared/css/reset.css">
+        <link rel="stylesheet" href="../shared/css/common.css">
+        <link rel="stylesheet" href="../shared/css/top.css">
+        <link rel="stylesheet" href="../shared/css/contact.css">
+        <script src="../shared/js/jQuery-3.4.1.min.js"></script>
+        <script src="../shared/js/plugin/jquery.inview.min.js"></script>
+        <script src="../shared/js/main.js"></script>
+        <script src="../shared/js/contact.js"></script>
+        <title>お問い合わせ - HIKITSUGI</title>
+    </head>
+<body>
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <header>
+        <h1 class="site_title">
+            <a href="../index.html">
+                <img src="../shared/img/logo.png" alt="HIKITSUGI">
+            </a>
+        </h1>
+        <div class="drawer">
+            <input type="checkbox" id="drawer_check" class="drawer_hidden" >
+            <label for="drawer_check" class="drawer_open"><span></span></label>
+            <nav id="menu_header" class="drawer_content">
+                <ul>
+                    <li><a href="../index.html#about">ABOUT</a></li>
+                    <li><a href="../index.html#service">SERVICE</a></li>
+                    <!--
+                    <li><a href="">NEWS</a></li>
+                    -->
+                    <li><a href="../company/index.html">COMPANY</a></li>
+                    <li><a href="">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <article class="wrap">
+            <h2>CONTATC<span>問い合わせ</span></h2>
+            <form id="form" name="contact" method="post">
+                <div class="clear contact_area">
+                    <label class="title">会社名</label>
+                    <div class="answer">
+                        <input class="company_name" id="company_name" type="text" name="entry.2031051849">
+                    </div>
+                    <label id="confirm_company_name"></label>
+                </div>
+                <label class="error" id="text_company_name"></label>
+                <div class="clear contact_area">
+                    <label class="title">氏名<span>必須</span></label>
+                    <div class="answer">
+                        <div class="flex">
+                            <input class="last_name required flex_item" id="last_name" type="text" name="entry.1767441942" placeholder="山田" required>
+                            <input class="firstname required flex_item" id="first_name" type="text" name="first_name" placeholder="太郎" required>
+                        </div>
+                    </div>
+                    <label id="confirm_name"></label>
+                    <label class="error" id="text_name"></label>
+                </div>
+                <div class="clear contact_area">
+                    <label class="title">フリガナ<span>必須</span></label>
+                    <div class="answer">
+                        <div class="flex">
+                            <input class="last_kana required flex_item" id="last_kana" type="text" name="entry.2141201490" value="" pattern="[ァ-ヴー\s　]+" title="全角カタカナ" placeholder="ヤマダ" required>
+                            <input class="first_kana required flex_item" id="first_kana" type="text" name="first_kana" value="" pattern="[ァ-ヴー\s　]+" title="全角カタカナ" placeholder="タロウ" required>
+                        </div>
+                    </div>
+                    <label id="confirm_kana"></label>
+                    <label class="error" id="text_kana"></label>
+                </div>
+                <div class="clear contact_area">
+                    <label class="title">メールアドレス<span>必須</span></label>
+                    <div class="answer">
+                        <input class="email required" id="email" type="email" name="entry.1197767915" placeholder="example@mail.co.jp" required>
+                    </div>
+                    <label id="confirm_email"></label>
+                    <label class="error" id="text_email"></label>
+                </div>
+                <div class="clear contact_area">
+                    <label class="title">電話番号<span>必須</span></label>
+                    <div class="answer">
+                        <input class="tel required" id="tel" type="email" name="entry.529912731" placeholder="00-0000-0000" required>
+                    </div>
+                    <label id="confirm_tel"></label>
+                    <label class="error" id="text_tel"></label>
+                </div>
+                <div class="clear contact_area">
+                    <label class="title">お問合せ内容<span>必須</span></label>
+                    <div class="answer">
+                        <textarea class="comments required" id="comments" name="entry.103441055" required></textarea>
+                    </div>
+                    <label id="confirm_comments"></label>
+                    <label class="error clear" id="text_comments"></label>
+                </div>
+                <label id="contact_agreement1">個人情報の取り扱いにつきましては<a href="../policy/index.html" target="_brank">プライバシーポリシー</a>をご確認ください。</label>
+                <div class="agreement_area">
+                    <input type="checkbox" name="agreement" id="agreement" value="1" required /><label id="contact_agreement2" for="agreement">プライバシーポリシーに同意する</label>
+                </div>
+                <input class="btn btn_design" id="confirmBtn" type="button" value="確認する" disabled>
+                <div class="btn_area">
+                    <input class="btn btn_design" id="backBtn" type="hidden" value="戻る">
+                    <input class="btn btn_design" id="submitBtn" type="hidden" value="送信する">
+                </div>
+            </form>
+            <div id="success" style="display: none;">
+                お問合せを受け付けました。
+                <button class="btn">
+                    <a href="../index.html">トップに戻る</a>
+                </button>  
+            </div>
+            <div id="error" style="display: none;">
+                お手数をかけますが、再度申し込みをお願いいたします。
+            </div>
+        </article>
+    </main>
+    <footer>
+        <ul>
+            <li><a href="../index.html#about">ABOUT</a></li>
+            <li><a href="../index.html#service">SERVICE</a></li>
+            <li><a href="#">CONTACT</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">企業概要</a></li>
+            <li><a href="">プライバシーポリシー</a></li>
+        </ul>
+        <p class="copyright">© HIKITSUGI, Inc. All rights reserved.</p>
+    </footer>
+</body>
+</html>
